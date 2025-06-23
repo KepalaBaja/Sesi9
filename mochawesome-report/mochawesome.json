@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-23T18:14:48.673Z",
+    "end": "2025-06-23T18:14:51.136Z",
+    "duration": 2463,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "55a571b5-9950-4f4b-8c36-8290d3f213de",
+      "title": "",
+      "fullFile": "E:\\QA\\HomeWorkSesi9\\tests\\test-sauce.js",
+      "file": "\\tests\\test-sauce.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3fb484ca-d65a-47d0-8ba9-ff4653742557",
+          "title": "Test Case 1 - Sorting Produk A-Z",
+          "fullFile": "E:\\QA\\HomeWorkSesi9\\tests\\test-sauce.js",
+          "file": "\\tests\\test-sauce.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Melakukan login dan sorting produk A-Z dan Z-A",
+              "fullTitle": "Test Case 1 - Sorting Produk A-Z Melakukan login dan sorting produk A-Z dan Z-A",
+              "timedOut": false,
+              "duration": 2454,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build();\nawait driver.get('https://www.saucedemo.com');\n// Hasil screenshot Halaman Login\nconst HalamanLogin = await driver.takeScreenshot();\nfs.writeFileSync('Halaman Login.png', HalamanLogin, 'base64');\n// Login\nlet inputUsername = await driver.findElement(By.css('[data-test=\"username\"]'));\nlet inputPassword = await driver.findElement(By.xpath('//*[@data-test=\"password\"]'));\nlet buttonLogin = await driver.findElement(By.className('submit-button btn_action'));\nawait inputUsername.sendKeys('standard_user');\nawait inputPassword.sendKeys('secret_sauce');\nawait buttonLogin.click();\n// Hasil screenshot setelah Login\nconst MenuBeranda = await driver.takeScreenshot();\nfs.writeFileSync('Menu Beranda.png', MenuBeranda, 'base64');\n// Temukan dropdown sorting Z - A \nawait driver.findElement(By.xpath('//*[@id=\"header_container\"]/div[2]/div/span/select/option[2]')).click();\n// Assert Product\nlet Gambar = await driver.findElement(By.xpath('//*[@id=\"item_3_img_link\"]/img'));\nconst cekGambar = await Gambar.isDisplayed()\nassert.strictEqual(cekGambar, true);\n// Hasil screenshot produk Z - A\nconst HasilShorting = await driver.takeScreenshot();\nfs.writeFileSync('Hasil Shorting Z - A.png', HasilShorting, 'base64');\n\nawait driver.quit();",
+              "err": {},
+              "uuid": "9bda1982-dceb-4e83-b5e8-9966aa60558b",
+              "parentUUID": "3fb484ca-d65a-47d0-8ba9-ff4653742557",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9bda1982-dceb-4e83-b5e8-9966aa60558b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2454,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.8.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
